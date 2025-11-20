@@ -1,0 +1,38 @@
+import pytest
+
+def subtract(a, b):
+    """减法函数"""
+    return a - b
+
+def multiply(a, b):
+    """乘法函数"""
+    return a * b
+
+def divide(a, b):
+    """除法函数"""
+    if b == 0:
+        raise ValueError('Cannot divide by zero')
+    return a / b
+
+def test_subtract():
+    """测试减法功能"""
+    assert subtract(5, 3) == 2
+    assert subtract(0, 5) == -5
+    assert subtract(10, 10) == 0
+
+def test_multiply():
+    """测试乘法功能"""
+    assert multiply(3, 4) == 12
+    assert multiply(0, 5) == 0
+    assert multiply(-2, 3) == -6
+
+def test_divide():
+    """测试除法功能"""
+    assert divide(10, 2) == 5
+    assert divide(5, 2) == 2.5
+    assert divide(8, 4) == 2
+
+def test_divide_by_zero():
+    """测试除零异常"""
+    with pytest.raises(ValueError, match='Cannot divide by zero'):
+        divide(10, 0)
